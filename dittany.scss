@@ -1,0 +1,172 @@
+/* A ready-made CSS style sheet for EPUB documents.
+ * Written in 2023 by Rocky☆Star <rocky-star22@outlook.com>
+ *
+ * To the extent possible under law, the author(s) have dedicated all
+ * copyright and related and neighboring rights to this software to the
+ * public domain worldwide. This software is distributed without any
+ * warranty.
+ *
+ * You should have received a copy of the CC0 Public Domain Dedication
+ * along with this software. If not, see
+ * <http://creativecommons.org/publicdomain/zero/1.0/>.
+ */
+
+$script: "Hans" !default;
+
+@font-face {
+    font-family: "Dittany Ming";
+    src:
+        // Windows
+        local("SimSun"),
+        // macOS
+        local("ST Song"),
+        // Kindle
+        local("STSong"),
+        // Linux
+        local("AR PL UMing CN"), local("AR PL SungtiL GB");
+}
+
+@font-face {
+    font-family: "Dittany Gothic";
+    src:
+        // Windows
+        local("SimHei"),
+        // macOS
+        local("Hei"), local("ST Heiti"),
+        // Kindle
+        local("STHeiti"),
+        // Linux
+        local("Source Han Sans CN"), local("Noto Sans CJK SC"), local("WenQuanYi Micro Hei");
+}
+
+@font-face {
+    font-family: "Dittany Kaishu";
+    src:
+        // Windows
+        local("KaiTi"), local("KaiTi_GB2312"),
+        // macOS
+        local("Kai"), local("ST Kaiti"),
+        // Kindle
+        local("STKai"),
+        // Linux
+        local("AR PL UKai CN"), local("AR PL KaitiM GB");
+}
+
+@font-face {
+    font-family: "Dittany Fangsong";
+    src:
+        // Windows
+        local("FangSong"), local("FangSong_GB2312"),
+        // macOS
+        local("ST FangSong"),
+        // Kindle doesn't have imitation Song typefaces, therefore the default
+        // Ming typeface (STSong) will be used.
+        local("STSong"),
+        // Linux doesn't have imitation Song typefaces, too.
+        local("AR PL UMing CN"), local("AR PL SungtiL GB");
+}
+
+@function is-cjk-script() {
+    @if $script == "Hans" {
+        @return true;
+    }
+    @return false;
+}
+
+body {
+    hyphens: auto;
+}
+
+p {
+    @if is-cjk-script() {
+        text-indent: 2rem;
+    }
+}
+
+h1 {
+    font-family: inherit;
+    font-size: 1.75rem;
+    text-align: center;
+    color: #91531D;
+    font-weight: normal;
+    margin: 2.5em auto;
+
+    .style-a {
+        font-size: 1.375rem;
+        text-align: right;
+        color: #CF181A;
+    }
+    .style-b {
+        font-size: 1.375rem;
+        color: #478686;
+        border-bottom: dashed 1pt #478686;
+        margin-bottom: 2em;
+        padding: 0.3em 0;
+    }
+    .style-c {
+        font-size: 1.375rem;
+        color: #91531D;
+        margin-top: 2%;
+        padding-bottom: 1em;
+        border-bottom: solid 4pt #E8C696;
+        text-align: left;
+    }
+    .style-d {
+        font-size: 1.375rem;
+        color: #1F4A92;
+        border-bottom: solid 1pt #1F4A92;
+        padding: 0.2em 0 0.5em;
+        text-align: left;
+    }
+    body.copyright-page & {
+        font-size: 1.5rem;
+        color: inherit;
+        margin: auto;
+    }
+}
+
+h2, body.sect1 h1 {
+    font-family: inherit;
+    font-size: 1.625rem;
+    color: #91531D;
+    font-weight: normal;
+    margin: 2em auto 1.8em;
+    text-align: left;
+}
+
+h3, body.sect1 h2, body.sect2 h1 {
+    font-family: inherit;
+    font-size: 1.375rem;
+    color: #91531D;
+    font-weight: normal;
+    margin: 2em auto 1.8em;
+    text-align: left;
+}
+
+h4, body.sect1 h3, body.sect2 h2, body.sect3 h1 {
+    font-family: inherit;
+    font-size: 1.25rem;
+    color: #91531D;
+    font-weight: normal;
+    margin: 2em auto 1.8em;
+    text-align: left;
+    @if is-cjk-script() {
+        font-family: "Dittany Gothic", sans-serif;
+        *.w { font-family: sans-serif }
+    }
+}
+
+h5, body.sect1 h4, body.sect2 h3, body.sect3 h2, body.sect4 h1 {
+    font-family: inherit;
+    font-size: 1.125rem;
+    color: #91531D;
+    font-weight: normal;
+    margin: 2em auto 1.8em;
+    padding-left: 1%;
+    border-left: solid 5pt #D9D9D9;
+    text-align: left;
+    @if is-cjk-script() {
+        font-family: "Dittany Gothic", sans-serif;
+        *.w { font-family: sans-serif }
+    }
+}
